@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Document</title>
+</head>
+<style>
+          #min {
+                    height: 60px;
+                    border: 1px solid red;
+                    width: 8%;
+                    margin-left: 34%;
+                    position: relative;
+                    background-color: red;
+                    margin-top: 60px;
+                    color: black;
+                    text-align: center;
+                    line-height: 60px;
+                    margin-bottom: 10px;
+                    font-size: 20px;
+
+          }
+
+          span {
+                    font-size: 20px;
+          }
+
+          #max {
+                    height: 60px;
+                    border: 1px solid red;
+                    width: 8%;
+                    position: absolute;
+                    margin-left: 56%;
+                    margin-top: -93px;
+                    background-color: green;
+                    color: black;
+                    text-align: center;
+                    line-height: 60px;
+                    margin-bottom: 10px;
+                    font-size: 20px;
+
+
+          }
+
+          /* span {
+                    border: 1px solid red;
+
+          } */
+
+
+
+          #keypad {
+                    display: grid;
+                    grid-template-columns: repeat(3, 1fr);
+
+                    margin: auto;
+                    margin-top: 15px;
+                    height: 450px;
+                    width: 24%;
+                    /* border: 1px solid red; */
+                    gap: 10px;
+
+          }
+
+          #keypad>button {
+                    margin-top: 10px;
+                    width: 100%;
+                    font-size: 20px;
+
+          }
+
+          #score {
+                    grid-column-start: 1;
+                    grid-column-end: 3;
+                    border: 1px solid red;
+                    height: 60px;
+                    margin-left: 27%;
+                    margin-top: 10px;
+                    text-align: center;
+                    line-height: 50px;
+                    font-size: 20px;
+
+          }
+
+          .zero {
+                    height: 50px;
+                    width: 100px;
+                    /* border: 1px solid orange; */
+                    margin-left: 110%;
+          }
+
+          .enter {
+                    margin-left: 45%;
+                    height: 50px;
+                    width: 10%;
+                    /* border: 1px solid green; */
+                    margin-top: 30px;
+                    background: black;
+                    color: white;
+                    font-size: 20px;
+          }
+
+          #score {
+                    width: 200px;
+                    background: grey;
+                    font-size: 20px;
+
+
+          }
+</style>
+
+<body>
+
+          <div id="min">43</div>
+          <span style="margin-left:36%; padding: 15px; height: 100px;">Min</span>
+          <div id="max">2019</div>
+          <span style="margin-left:18%; padding: 15px; height: 100px;">Max</span>
+
+
+
+          <div id="keypad">
+                    <input id="score" placeholder="#score" type="text"> <br>
+
+                    <button onclick="getValue('1')" style="background: lightgreen;">1</button>
+                    <button onclick="getValue('2')" style="background: orange;">2</button>
+                    <button onclick="getValue('3')" style="background: lightgreen;">3</button>
+                    <button onclick="getValue('4')" style="background: orange;">4</button>
+                    <button onclick="getValue('5')" style="background: orange;">5</button>
+                    <button onclick="getValue('6')" style="background: orange;">6</button>
+                    <button onclick="getValue('7')" style="background: lightgreen;">7</button>
+                    <button onclick="getValue('8')" style="background: orange;">8</button>
+                    <button onclick="getValue('9')" style="background: lightgreen;">9</button>
+                    <button onclick="getValue('0')" class="zero" style="background:purple;">0</button>
+          </div>
+          <button class="enter" onclick="fix()">Enter</button>
+</body>
+
+
+</html>
+
+
+
+<script>
+          let display = document.getElementById("score");
+          let minElement = document.getElementById("min");
+          let maxElement = document.getElementById("max");
+          let minNum = Number(minElement.textContent);
+          let maxNum = Number(maxElement.textContent);
+
+          // console.log(typeof(minNum,maxNum))
+
+          function getValue(a) {
+                    display.value += a;
+
+          }
+
+          function fix() {
+                    let strNum = Number(display.value);
+                    // console.log(strNum)
+
+                    // Comapasion 
+                    if (strNum < minNum) {
+                              minElement.textContent = strNum;
+                    } else if (strNum > maxNum) {
+                              maxElement.textContent = strNum;
+                    }
+
+                    display.value = " "
+
+          }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          // str = ""
+          // let display = document.getElementById("score")
+
+          // function getValue(a) {
+
+          //           str = str + a
+
+          //           display.value = str
+          // }
+
+
+          // let min = document.getElementById("min").textContent
+          // let max = document.getElementById("max").textContent
+          // // console.log(typeof (min, max))
+          // // console.log(min, max)
+
+
+          // let minNum = Number(min)
+          // let maxNum = Number(max)
+          // let strNum = Number(str)
+          // // console.log(typeof (minNum, maxNum))
+
+          // function fix() {
+
+
+          //           if (str < maxNum) {
+          //                     str = minNum
+          //           }
+          //           else if (str > maxNum) {
+
+          //                     str = maxNum
+          //                     console.log("Hi")
+          //           }
+
+
+          // }
+
+
+
+          // let min = document.getElementById("min")
+          // let max = document.getElementById("max")
+          // let score = document.querySelector(".score")
+          // let enter = document.querySelector(".enter")
+          // let button = document.querySelectorAll("#keypad>button")
+          // let compare = ""
+          // let maximum = 0
+          // let minimum = 0
+          // for (let i = 0; i < button.length; i++) {
+          //           button[i].addEventListener('click', function () {
+          //                     compare += button[i].innerText
+          //                     min.innerText = compare
+
+          //                     maximum = Number(max.innerText)
+          //                     minimum = Number(min.innerText)
+
+          //           })
+          // }
+
+
+          // function fix() {
+          //           if (minimum > maximum) {
+          //                     max.innerText = minimum.innerText
+          //           }
+
+          //           else {
+          //                     min.innerText = maximum.innerText
+          //           }
+          // }
+
+
+
+
+</script>
